@@ -1,0 +1,245 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "id": "4420b35c",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import pandas as pd\n",
+    "import numpy as np"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "id": "01b5fd25",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>My_City</th>\n",
+       "      <th>My_Gender</th>\n",
+       "      <th>My_Population</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>0</th>\n",
+       "      <td>New York</td>\n",
+       "      <td>Male</td>\n",
+       "      <td>4125000</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>1</th>\n",
+       "      <td>New York</td>\n",
+       "      <td>Female</td>\n",
+       "      <td>4300000</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2</th>\n",
+       "      <td>Los Angeles</td>\n",
+       "      <td>Male</td>\n",
+       "      <td>1985000</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>3</th>\n",
+       "      <td>Los Angeles</td>\n",
+       "      <td>Female</td>\n",
+       "      <td>2070000</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>4</th>\n",
+       "      <td>Phoenix</td>\n",
+       "      <td>Male</td>\n",
+       "      <td>99800000</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>5</th>\n",
+       "      <td>Chicago</td>\n",
+       "      <td>Male</td>\n",
+       "      <td>1350000</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>6</th>\n",
+       "      <td>Chicago</td>\n",
+       "      <td>Female</td>\n",
+       "      <td>1400000</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>7</th>\n",
+       "      <td>Houston</td>\n",
+       "      <td>Male</td>\n",
+       "      <td>1100000</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>8</th>\n",
+       "      <td>Houston</td>\n",
+       "      <td>Female</td>\n",
+       "      <td>1120000</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>9</th>\n",
+       "      <td>Phoenix</td>\n",
+       "      <td>Male</td>\n",
+       "      <td>800000</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>10</th>\n",
+       "      <td>Phoenix</td>\n",
+       "      <td>Female</td>\n",
+       "      <td>810000</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>11</th>\n",
+       "      <td>Philadelphia</td>\n",
+       "      <td>Male</td>\n",
+       "      <td>750000</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>12</th>\n",
+       "      <td>Philadelphia</td>\n",
+       "      <td>Female</td>\n",
+       "      <td>770000</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>13</th>\n",
+       "      <td>New York</td>\n",
+       "      <td>Male</td>\n",
+       "      <td>99125000</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>14</th>\n",
+       "      <td>Phoenix</td>\n",
+       "      <td>Male</td>\n",
+       "      <td>99800000</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "         My_City My_Gender  My_Population\n",
+       "0       New York      Male        4125000\n",
+       "1       New York    Female        4300000\n",
+       "2    Los Angeles      Male        1985000\n",
+       "3    Los Angeles    Female        2070000\n",
+       "4        Phoenix      Male       99800000\n",
+       "5        Chicago      Male        1350000\n",
+       "6        Chicago    Female        1400000\n",
+       "7        Houston      Male        1100000\n",
+       "8        Houston    Female        1120000\n",
+       "9        Phoenix      Male         800000\n",
+       "10       Phoenix    Female         810000\n",
+       "11  Philadelphia      Male         750000\n",
+       "12  Philadelphia    Female         770000\n",
+       "13      New York      Male       99125000\n",
+       "14       Phoenix      Male       99800000"
+      ]
+     },
+     "execution_count": 4,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "df = pd.read_csv('city_population.csv')\n",
+    "df"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 29,
+   "id": "967867f9",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "{'Chicago': 1350000, 'Houston': 1100000, 'Los Angeles': 1985000, 'New York': 103250000, 'Philadelphia': 750000, 'Phoenix': 200400000}\n"
+     ]
+    }
+   ],
+   "source": [
+    "g = df.groupby('My_City')\n",
+    "dic = {}\n",
+    "lst = []\n",
+    "for city, city_df in g:\n",
+    "    male_pop = city_df['My_Population'][city_df['My_Gender'] == 'Male'].sum()\n",
+    "    dic[city] = male_pop\n",
+    "    lst.append(male_pop)\n",
+    "print(dic)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 39,
+   "id": "4783773f",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Phoenix 200400000\n"
+     ]
+    }
+   ],
+   "source": [
+    "for city in dic:\n",
+    "    if dic[city] == max(lst):\n",
+    "        print(city, dic[city])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "3e56a471",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3 (ipykernel)",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.9.12"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
